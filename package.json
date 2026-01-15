@@ -1,0 +1,23 @@
+{
+  "name": "qual-e-a-boa",
+  "version": "1.0.0",
+  "description": "backend do projeto qual-e-a-boa",
+  "homepage": "https://github.com/DanyloHenrique/backend-qual-e-a-boa#readme",
+  "bugs": {
+    "url": "https://github.com/DanyloHenrique/backend-qual-e-a-boa/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanyloHenrique/backend-qual-e-a-boa.git"
+  },
+  "license": "ISC",
+  "author": "danylo",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

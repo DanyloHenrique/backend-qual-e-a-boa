@@ -18,7 +18,8 @@
     "dev": "tsx watch --env-file=.env src/server.ts",
     "start": "node dist/server.js",
     "build": "tsc",
-    "prisma:migrate:deploy": "prisma migrate deploy"
+    "start:prod": "prisma generate && prisma migrate deploy && node dist/server.js"
+
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.2.0",

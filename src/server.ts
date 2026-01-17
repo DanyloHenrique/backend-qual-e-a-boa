@@ -15,8 +15,29 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-app.get("/", (req, res) => {
-  res.send("Hello World!")
+app.get("/category", async (_req: Request, response: Response) => {
+  const allCategory = await prisma.category.findMany()
+
+  response.status(200).send({
+    data: allCategory,
+    message: "Dados encontrados com sucesso",
+  })
+})
+
+app.post("/category", async (request: Request, response: Response) => {
+  const categorySchema = z.object({
+    name: z.string(),
+  })
+
+  const { name } = categorySchema.parse(request.body)
+
+  await prisma.category.create({
+    data: {
+      name,
+    },
+  })
+
+  response.status(201).send({ message: "Categoria criada com sucesso!" })
 })
 
 const port = process.env.PORT ? Number(process.env.PORT) : 3000

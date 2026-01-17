@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String   @db.Text
+  date        DateTime
+  location    String
+  address     String
+
+  price      Float?
+  capacity   Int?
+  coverImage String?
+  tags       String[]
+
+  organizar String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  categoryId Int
+  category   Category @relation(fields: [categoryId], references: [id])
+}
+
+model Category {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  events Event[]
+}

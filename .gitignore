@@ -1,1 +1,10 @@
 node_modules/
+
+*.txt
+/src/generated/prisma
+
+/generated/prisma
+
+HTTPclient/
+
+.env

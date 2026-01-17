@@ -19,7 +19,6 @@
     "start": "node dist/server.js",
     "build": "tsc",
     "start:prod": "prisma generate && prisma migrate deploy && node dist/server.js"
-
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.2.0",

@@ -2,7 +2,7 @@ import cors from "cors"
 import express, { type Request, type Response } from "express"
 import { z } from "zod"
 
-import { prisma } from "../lib/prisma.js"
+import { prisma } from "./lib/prisma.js"
 
 const app = express()
 app.use(express.json())

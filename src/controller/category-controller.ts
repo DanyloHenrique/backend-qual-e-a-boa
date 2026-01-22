@@ -1,5 +1,5 @@
 import type { Request, Response } from "express"
-import z, { success } from "zod"
+import z from "zod"
 
 import { categoryUseCase } from "@/useCases/category-useCase.js"
 
@@ -33,7 +33,7 @@ export const categoryController = {
     }
   },
 
-  async getMany(response: Response) {
+  async getMany(request: Request, response: Response) {
     try {
       const categorylist = await categoryUseCase.getMany()
 
@@ -42,9 +42,10 @@ export const categoryController = {
         payload: categorylist,
       })
     } catch (err: any) {
-      return response.status(500).json({
-        message: "Erro ao buscar categorias",
-      })
+      console.log(err)
+      // return response.status(500).json({
+      //   message: "Erro ao buscar categorias",
+      // })
     }
   },
 

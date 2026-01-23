@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "tsx watch --env-file=.env src/server.ts",
     "start": "node dist/src/server.js",
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "start:prod": "prisma migrate deploy && node dist/src/server.js"
   },
   "dependencies": {
@@ -38,6 +38,7 @@
     "@types/pg": "^8.16.0",
     "dotenv": "^17.2.3",
     "prisma": "^7.2.0",
+    "tsc-alias": "^1.8.16",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }

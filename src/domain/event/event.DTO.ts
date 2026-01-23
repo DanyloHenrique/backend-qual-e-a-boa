@@ -14,3 +14,9 @@ export interface EventDTO {
 
   categoryId: number
 }
+
+export interface EventCreatedDTO {
+  id: string
+  title: string
+  createdAt: Date
+}

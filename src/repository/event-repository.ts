@@ -1,8 +1,9 @@
+import type { EventCreatedDTO } from "@/domain/event/event.DTO.js"
 import { Event } from "@/domain/event/event.model.js"
 import { prisma } from "@/lib/prisma.js"
 
 export const eventRepository = {
-  async create(eventData: Event) {
+  async create(eventData: Event): Promise<EventCreatedDTO> {
     const data = eventData.toObject()
     const eventCreated = await prisma.event.create({
       data: {
@@ -24,9 +25,12 @@ export const eventRepository = {
         updatedAt: data.updatedAt,
       },
       select: {
+        id: true,
         title: true,
+        createdAt: true,
       },
     })
+
     return eventCreated
   },
 
@@ -96,6 +100,7 @@ export const eventRepository = {
       } = event
 
       return new Event({
+        id: event.id,
         title,
         description,
         date,
@@ -119,25 +124,24 @@ export const eventRepository = {
     const data = eventData.toObject()
     await prisma.event.update({
       where: {id: data.id},
-      data: {
-          title: data.title,
-          description: data.description,
-          date: data.date,
-          location: data.location,
-          address: data.address,
-  
-          price: data.price,
-          capacity: data.capacity,
-          coverImage: data.coverImage,
-          tags: data.tags,
-  
-          organization: data.organization,
-  
-          categoryId: data.categoryId,
-          createdAt: data.createdAt,
-          updatedAt: data.updatedAt,
+      data:{
+        title: data.title,
+        description: data.description,
+        date: data.date,
+        location: data.location,
+        address: data.address,
 
-      }
+        price: data.price,
+        capacity: data.capacity,
+        coverImage: data.coverImage,
+        tags: data.tags,
+
+        organization: data.organization,
+
+        categoryId: data.categoryId,
+        createdAt: data.createdAt,
+        updatedAt: data.updatedAt,
+      },
     })
   },
 

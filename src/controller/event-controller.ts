@@ -45,7 +45,7 @@ export const eventController = {
     }
   },
 
-  async getMany(request: Request, response: Response) {
+  async getMany(_request: Request, response: Response) {
     try {
       const eventListFound = await eventUseCase.getMany()
       return response.status(200).send({

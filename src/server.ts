@@ -16,6 +16,9 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
+app.get('/', (_req, res)=>{
+  res.send('Bem vinda(o) a API do Qual é a Boa?')
+})
 app.use(routerCategory)
 app.use(routerEvent)
 app.use(contactRouter)

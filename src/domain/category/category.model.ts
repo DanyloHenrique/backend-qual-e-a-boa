@@ -11,6 +11,7 @@ export class Category {
 
   public toObject() {
     return {
+      id: this.id,
       name: this.name,
     }
   }
